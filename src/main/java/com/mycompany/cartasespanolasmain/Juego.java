@@ -6,6 +6,7 @@ package com.mycompany.cartasespanolasmain;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import static java.util.Collections.shuffle;
 import java.util.LinkedHashSet;
 import javax.swing.JOptionPane;
 
@@ -13,8 +14,9 @@ import javax.swing.JOptionPane;
  *
  * @author DANIELALEJANDROMIRAN
  */
-public class Juego {
+public class Juego { //Lo hice solo, no se si hacia falta realmente armar un grupo de 4...
     LinkedHashSet<Palo> CartaEspanola = new LinkedHashSet();
+    ArrayList<Palo> AUX = new ArrayList();
     public void LlenarBaraja(){
         CartaEspanola.removeAll(CartaEspanola);
         byte AUX=0;
@@ -45,34 +47,24 @@ public class Juego {
                     break;
             }
         }
-    }
+    } // He hecho el metodo de manera que se pueda restablecer los valores y cantidades, para iniciar un nuevo juego si es el caso.
     public void MostrarBaraja(){
         for(Palo P:CartaEspanola){
             System.out.println(P);
         }
-    }
-    public void BarajarFirst(){
+    } 
+    public void Barajar(){ // Utilizando el metodo de las colecciones "Shuffle" pude ordenar esta Lista de Palos.
         ArrayList<Palo> P = new ArrayList(CartaEspanola);
-        Collections.sort(P, new OrdenNumero());
-        CartaEspanola.removeAll(CartaEspanola);
+        shuffle(P);
+        CartaEspanola.removeAll(CartaEspanola); //Un orden sale y otro ingresa.
         CartaEspanola.addAll(P);
-    }
-    public void BarajarSecond(){
-        ArrayList<Palo> P = new ArrayList(CartaEspanola);
-        Collections.sort(P, new OrdenNombre());
-        CartaEspanola.removeAll(CartaEspanola);
-        CartaEspanola.addAll(P);
-    }
-    public void BarajarThird(){
-        ArrayList<Palo> P = new ArrayList(CartaEspanola);
-        CartaEspanola.removeAll(CartaEspanola);
-        CartaEspanola.addAll(P.reversed());
     }
     public Palo SiguienteCarta(){
         byte i=0;
         byte AUXI=(byte) (Math.random() * CartaEspanola.size());
         for(Palo P:CartaEspanola){
             if(i==AUXI && CartaEspanola.isEmpty()!=true){
+                AUX.add(P);
                 CartaEspanola.remove(P);
                 return P;
             } else if (CartaEspanola.isEmpty()==true){
@@ -85,10 +77,29 @@ public class Juego {
     }
     public byte Tamano(){
         return (byte) CartaEspanola.size();
-    }
+    } // Retorna el tamaño del conjunto.
     public ArrayList<Palo> DarCartas(byte B){
         ArrayList<Palo> P = new ArrayList();
-        
-        return P;
+        if(CartaEspanola.size()<=B){
+            for(int i=0;i<B;i++){
+            AUX.add(CartaEspanola.getLast());
+            P.add(CartaEspanola.getLast());
+            CartaEspanola.removeLast();
+            }
+        }
+        if(P.isEmpty()!=true){
+            return P;
+        }
+        return null;
+    } //Devuelve cierta cantidad de cartas que el usuario pidio.
+    public void CartaMonton(){ //No entendi bien el Enunciado.
+        System.out.println("Cartas Que ya han salido del conjunto");
+        System.out.println("");
+        System.out.println("-------------");
+        for(Palo Lil:AUX){
+            System.out.println(Lil);
+        }
+        System.out.println("-------------");
+        System.out.println("");
     }
 }
