@@ -15,8 +15,8 @@ import javax.swing.JOptionPane;
  * @author DANIELALEJANDROMIRAN
  */
 public class Juego { //Lo hice solo, no se si hacia falta realmente armar un grupo de 4...
-    LinkedHashSet<Palo> CartaEspanola = new LinkedHashSet();
-    ArrayList<Palo> AUX = new ArrayList();
+    private LinkedHashSet<Palo> CartaEspanola = new LinkedHashSet();
+    private ArrayList<Palo> AUX = new ArrayList();
     public void LlenarBaraja(){
         CartaEspanola.removeAll(CartaEspanola);
         byte AUX=0;
@@ -63,10 +63,10 @@ public class Juego { //Lo hice solo, no se si hacia falta realmente armar un gru
         byte i=0;
         byte AUXI=(byte) (Math.random() * CartaEspanola.size());
         for(Palo P:CartaEspanola){
-            if(i==AUXI && CartaEspanola.isEmpty()!=true){
+            if(i==AUXI && CartaEspanola.isEmpty()!=true){ //Mientras la lista no este vacia.
                 AUX.add(P);
                 CartaEspanola.remove(P);
-                return P;
+                return P; 
             } else if (CartaEspanola.isEmpty()==true){
                 JOptionPane.showInputDialog("No hay mas Cartas.");
                 return null;

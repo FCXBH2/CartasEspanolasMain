@@ -9,8 +9,8 @@ package com.mycompany.cartasespanolasmain;
  * @author DANIELALEJANDROMIRAN
  */
 public abstract class Palo {
-    byte numero;
-    String palo="Palo";
+    private byte numero;
+    private String palo="Palo";
     public Palo(String Palo){
         this.palo=Palo;
         do
