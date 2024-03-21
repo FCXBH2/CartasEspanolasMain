@@ -28,8 +28,8 @@ public class CartasEspanolasMain {
                 Jugador J1 = new Jugador(JOptionPane.showInputDialog("Nombre del Jugador "+(i+1)));
                 J.add(J1);
             }
-            System.out.println("                                     Cantidad de Jugadores: "+Numero_Jugadores);
-            System.out.println("                                     ------------------------");
+            System.out.println("                                                              Cantidad de Jugadores: "+Numero_Jugadores);
+            System.out.println("                                                              ------------------------");
             Juego juego = new Juego();
             juego.LlenarBaraja();
             Numero_Jugadores=0;
