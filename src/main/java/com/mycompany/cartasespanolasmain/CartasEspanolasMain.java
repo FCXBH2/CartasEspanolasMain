@@ -22,7 +22,7 @@ public class CartasEspanolasMain {
         juego.LlenarBaraja();
         do
         {
-            String S = JOptionPane.showInputDialog("Barajar / Siguiente Carta / Cartas Restantes / Cantidad Cartas / Cartas Jugador");
+            String S = JOptionPane.showInputDialog("Barajar / Siguiente Carta / Dar Cartas / Cartas Restantes / Cantidad Cartas / Cartas Jugador");
             if(S.equals("Barajar")){
                 int Barajar=0;
                 do
@@ -51,13 +51,20 @@ public class CartasEspanolasMain {
                 JOptionPane.showMessageDialog(null, "Cartas Disponibles: "+ juego.Tamano());
             }
             if(S.equals("Cartas Jugador")){
+                System.out.println("");
+                    System.out.println("---------------------");
                 for(Palo P:Jugador){
-                    System.out.println("");
-                    System.out.println("---------------------");
+                    
                     System.out.println(P);
-                    System.out.println("---------------------");
-                    System.out.println("");
+                    
                 }
+                System.out.println("---------------------");
+                    System.out.println("");
+            }
+            if(S.equals("Dar Cartas")){
+                byte AUXI=Byte.parseByte(JOptionPane.showInputDialog("Cantidad de Cartas que quieres recibir."));
+                Jugador.addAll(juego.DarCartas(AUXI));
+                
             }
         }while(Bucle==true);
     }

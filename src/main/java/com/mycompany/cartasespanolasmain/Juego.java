@@ -77,11 +77,18 @@ public class Juego {
                 return P;
             } else if (CartaEspanola.isEmpty()==true){
                 JOptionPane.showInputDialog("No hay mas Cartas.");
+                return null;
             }
+            i++;
         }
         return null;
     }
     public byte Tamano(){
         return (byte) CartaEspanola.size();
+    }
+    public ArrayList<Palo> DarCartas(byte B){
+        ArrayList<Palo> P = new ArrayList();
+        
+        return P;
     }
 }
