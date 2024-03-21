@@ -19,6 +19,7 @@ public class CartasEspanolasMain {
             boolean Bucle=true;
             byte AUXB=0;
             byte Numero_Jugadores=0;
+            
             do
             {
                 Numero_Jugadores=Byte.parseByte(JOptionPane.showInputDialog("Cantidad de jugadores(Maximo 4)"));
@@ -53,23 +54,23 @@ public class CartasEspanolasMain {
             }
             if(S.equals("Otro Menu")){
                 String SX=JOptionPane.showInputDialog("Barajar / Cantidad Cartas / Cartas Jugador / Cartas Restantes / Cartas Monton");
-                if(S.equals("Barajar")){
+                if(SX.equals("Barajar")){
                 juego.Barajar();
                 }
-                if(S.equals("Cartas Monton")){
+                if(SX.equals("Cartas Monton")){
                 juego.CartaMonton();
                 }
-                if(S.equals("Cartas Restantes")){
+                if(SX.equals("Cartas Restantes")){
                 System.out.println("");
                 System.out.println("------------------");
                 juego.MostrarBaraja();
                 System.out.println("------------------");
                 System.out.println("");
                 }
-                if(S.equals("Cantidad Cartas")){
+                if(SX.equals("Cantidad Cartas")){
                 JOptionPane.showMessageDialog(null, "Cartas Disponibles: "+ juego.Tamano());
                 }
-                if(S.equals("Cartas Jugador")){ //Esto es solo opcional, para saber si realmente esta agarrando las cartas, no tiene relevancia en el proyecto.
+                if(SX.equals("Cartas Jugador")){ //Esto es solo opcional, para saber si realmente esta agarrando las cartas, no tiene relevancia en el proyecto.
                 System.out.println("--------------------------");
                 System.out.println("Cartas del Jugador "+J.get(Numero_Jugadores).getNombre());
                 System.out.println(J.get(Numero_Jugadores).getP());
