@@ -7,6 +7,7 @@ package com.mycompany.cartasespanolasmain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -71,11 +72,16 @@ public class Juego {
         byte i=0;
         byte AUXI=(byte) (Math.random() * CartaEspanola.size());
         for(Palo P:CartaEspanola){
-            if(i==AUXI){
+            if(i==AUXI && CartaEspanola.isEmpty()!=true){
                 CartaEspanola.remove(P);
                 return P;
+            } else if (CartaEspanola.isEmpty()==true){
+                JOptionPane.showInputDialog("No hay mas Cartas.");
             }
         }
         return null;
+    }
+    public byte Tamano(){
+        return (byte) CartaEspanola.size();
     }
 }
