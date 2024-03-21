@@ -4,6 +4,8 @@
  */
 package com.mycompany.cartasespanolasmain;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedHashSet;
 
 /**
@@ -13,6 +15,7 @@ import java.util.LinkedHashSet;
 public class Juego {
     LinkedHashSet<Palo> CartaEspanola = new LinkedHashSet();
     public void LlenarBaraja(){
+        CartaEspanola.removeAll(CartaEspanola);
         byte AUX=0;
         for(int i=0;i<40;i++){
             switch (AUX){
@@ -46,5 +49,33 @@ public class Juego {
         for(Palo P:CartaEspanola){
             System.out.println(P);
         }
+    }
+    public void BarajarFirst(){
+        ArrayList<Palo> P = new ArrayList(CartaEspanola);
+        Collections.sort(P, new OrdenNumero());
+        CartaEspanola.removeAll(CartaEspanola);
+        CartaEspanola.addAll(P);
+    }
+    public void BarajarSecond(){
+        ArrayList<Palo> P = new ArrayList(CartaEspanola);
+        Collections.sort(P, new OrdenNombre());
+        CartaEspanola.removeAll(CartaEspanola);
+        CartaEspanola.addAll(P);
+    }
+    public void BarajarThird(){
+        ArrayList<Palo> P = new ArrayList(CartaEspanola);
+        CartaEspanola.removeAll(CartaEspanola);
+        CartaEspanola.addAll(P.reversed());
+    }
+    public Palo SiguienteCarta(){
+        byte i=0;
+        byte AUXI=(byte) (Math.random() * CartaEspanola.size());
+        for(Palo P:CartaEspanola){
+            if(i==AUXI){
+                CartaEspanola.remove(P);
+                return P;
+            }
+        }
+        return null;
     }
 }
